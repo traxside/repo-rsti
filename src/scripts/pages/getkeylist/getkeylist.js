@@ -1,3 +1,5 @@
+import {getKey} from '../../data/api'
+
 export default class GetKeyListPage {
   async render() {
     return `
@@ -9,7 +11,7 @@ export default class GetKeyListPage {
   
           <div class="profile title">Check Out</div>
           
-          <div class="card-panel z-depth-0 center-align key-container">000000</div>
+          <div class="card-panel z-depth-0 center-align key-container"></div>
           
           <div class="profile title">House Rules</div>
           <!-- Tambah padding -->
@@ -25,8 +27,8 @@ export default class GetKeyListPage {
           <!-- Button -->
           <div class="container profile">
               <!-- Check Out Button dibuat agar data di database hilang -->
-              <a class="waves-effect waves-light btn">Check Out</a>
-              <a class="waves-effect waves-light btn merah">Chat - Not Available</a>
+              <a class="waves-effect waves-light btn white-text">Check Out</a>
+              <a class="waves-effect waves-light btn merah white-text">Chat - Not Available</a>
           </div>
         
         </section>
@@ -34,7 +36,12 @@ export default class GetKeyListPage {
   }
 
   async afterRender() {
+    await this._displayKey();
+  }
 
+  async _displayKey() {
+    const keyContainer = document.querySelector('.key-container');
+    keyContainer.innerHTML = await getKey();
   }
 
 
