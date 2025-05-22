@@ -11,6 +11,9 @@ const routes = {
   '/about': new AboutPage(),
   '/login': new LoginPage(),
   '/profile': new ProfilePage(),
+  '/signup': new SignUpPage(),
+  '/reservationslist': new ReservationsListPage(),
+  '/reservation/:id': new ReservationPage(),
 };
 
 export default routes;

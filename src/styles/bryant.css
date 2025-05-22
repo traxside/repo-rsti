@@ -89,6 +89,10 @@ form > .container.input-box input::placeholder {
     color: var(--background-color);
 }
 
+.reserve.title.two{
+    margin-top: 0;
+}
+
 .reserve.title > span{
     font-weight: 900;
     color: var(--primary);
