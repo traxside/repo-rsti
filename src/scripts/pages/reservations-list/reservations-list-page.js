@@ -1,11 +1,12 @@
 export default class ReservationsListPage {
     async render(){
         return `
+        <div class="container row center-align header-reservation">
+            <a class="col back" href="#/profile"><img class="icon-detail" src="images/back_arrow_purple.png" alt="back button"></a>
+            <div class="reserve title two">Reservations List</div>
+        </div>  
+        
         <section class="container reservation-list-container">
-            <div class="container row valign-wrapper header-reservation">
-                <a class="col back" href="#/profile"><img class="icon-detail" src="images/back_arrow_purple.png" alt="back button"></a>
-                <div class="reserve title two">Reservations List</div>
-            </div>  
     
             <div class="container">
                 <div class="card-panel property">
