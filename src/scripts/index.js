@@ -1,5 +1,6 @@
 // CSS imports
 import '../styles/styles.css';
+import '../styles/bryant.css';
 
 // JS: import Materialize CSS and JS
 import 'materialize-css/dist/css/materialize.min.css';

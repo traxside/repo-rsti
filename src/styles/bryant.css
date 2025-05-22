@@ -1,0 +1,180 @@
+/* colours */
+:root{
+    --primary: #DF71AA;
+    --secondary: #7164B1;
+    --third: #868D9D;
+    --fourth: #E5E9F3;
+    --title: white;
+    --input-box: #E5E9F3;
+    --button: #B2A5FF;
+    --background-color: #292345;
+}
+
+/* Additional CSS Needs */
+/* body{
+    font-family: 'inter';
+    background-color: var(--background-color);
+} */
+
+.light-mode{
+    background-color: var(--title);
+}
+
+.auth-title{
+    color: var(--primary);
+    font-weight: 900;
+    font-size: 40px;
+}
+
+.waves-effect.waves-light.btn.submit{
+    background-color: var(--button);
+    color: var(--background-color);
+    font-weight: bold;
+    font-size: 15px;
+    width: 70%;
+    border-radius: 15px;
+    margin: 10px 0;
+    height: 50px;
+}
+
+.waves-effect.waves-light.btn{
+    background-color: var(--background-color);
+    color: var(--input-box);
+    font-weight: bold;
+    font-size: 15px;
+    width: 70%;
+    border-radius: 15px;
+    box-shadow: none;
+    margin: 5px 0;
+    padding: 8px 0;
+    height: auto;
+}
+
+.waves-effect.waves-light.btn.merah{
+    background-color: #D45656;
+}
+
+.container.profile{
+    text-align: center;
+}
+
+form > .container.input-box input{
+    padding: 10px 15px;
+    margin: 10px 0;
+    background-color: var(--input-box);
+    width: 80%;
+    border-radius: 16px;
+    outline: none;
+}
+
+form > .container.input-box input::placeholder {
+    font-weight: medium;
+    color: var(--third);
+}
+
+.signup-p{
+    color: var(--secondary);
+}
+
+.signup-button.class{
+    color: var(--button);
+    font-weight: bold;
+}
+
+.reserve.title{
+    margin-top: 25px;
+    padding-left: 15px;
+    font-weight: bold;
+    font-size: 25px;
+    color: var(--background-color);
+}
+
+.reserve.title > span{
+    font-weight: 900;
+    color: var(--primary);
+}
+
+/* bottom-nav */
+.bottom-nav {
+  bottom: 0;
+  width: 100%;
+  background-color: var(--background-color);
+  position: fixed;
+}
+.bottom-nav a {
+  color: white;
+}
+
+.nav-wrapper ul {
+  display: flex;
+  justify-content: space-around;
+  color: white;
+}
+
+.nav-wrapper ul li a.active {
+  color: var(--primary)
+}
+
+.nav-wrapper ul li a.active i {
+  color: var(--primary);
+}
+
+.nav-wrapper.container{
+  display: flex;
+  flex-direction: row;
+}
+
+a.container.icon{
+  display: flex;
+  flex-direction: column;
+  padding: 0 50px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+
+a.container.icon > i{
+    font-size: 30px;
+}
+
+a.container.icon > span{
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.card-panel.property{
+    margin-bottom: 8px;
+    padding: 18px;
+    box-shadow: none;
+    background-color: var(--background-color);
+    border-radius: 10px;
+}
+
+.card-panel.property > a{
+    color: var(--input-box);
+}
+
+.card-panel.property > a > .property-title{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.card-panel.profile{
+    background-color: var(--fourth);
+    color: var(--background-color);
+    border-radius: 8px;
+    box-shadow: none;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 18px;
+}
+
+.profile.title{
+    margin-top: 40px;
+    color: var(--background-color);
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}

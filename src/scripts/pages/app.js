@@ -45,14 +45,14 @@ class App {
   _updateNavigation() {
     const footer = document.querySelector('footer');
     footer.style.visibility = 'visible';
-    if(window.location.hash === '#/login') {
+    if(window.location.hash === '#/login' || window.location.hash === '#/signup') {
       footer.style.visibility = 'hidden';
     }
     // TODO ERROR ATTRIBUTES
     else {
       const reserve = document.querySelector('#reserve');
       const profile = document.querySelector('#profile');
-      if(window.location.hash === '#/home' || window.location.hash === '/#') {
+      if(window.location.hash === '#/home' || window.location.hash === '') {
         reserve.style.backgroundColor = '#DF71AA';
         reserve.style.color = '#292345';
         reserve.querySelector('#icon-hotel').setAttribute('src', 'images/hotel_dark.png'); //THIS AND OTHER .attributes

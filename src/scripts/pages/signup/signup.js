@@ -1,26 +1,31 @@
-export default class LoginPage {
+export default class SignUpPage {
     async render(){
         return `
-        <!-- Sign Up Input Form -->
-        <div class="login valign-wrapper">
+        <div class="valign-wrapper">
             <div class="container center-align">
                 <form id="signup-form">
-                    <h1 class="auth-title center-align"><span>Log In</span></h1>
+                    <h1 class="auth-title center-align"><span>Sign Up</span></h1>
 
                     <!-- Inputs -->
+                    <div class="container input-box">
+                        <input placeholder="Username" id="username" name="username" type="text" required>
+                    </div>
                     <div class="container input-box">
                         <input placeholder="Email" id="email" type="text" required>
                     </div>
                     <div class="container input-box">
                         <input placeholder="Password" id="password" type="password" required>
                     </div>
+                    <div class="container input-box">
+                        <input placeholder="Confirm Password" id="confirmpassword" name="confirmpassword" type="password" required>
+                    </div>
             
                     <!-- Button -->
                     <div class="container sign-in">
-                        <button type="submit" class="waves-effect waves-light btn submit">Get In</button>
+                        <button type="submit" class="waves-effect waves-light btn submit">Join</button>
                     </div>
                     <div class="container description">
-                        <p class="signup-p">Don't Have an account? <a class="signup-button class" href="#/signup">Sign Up</a></p>
+                        <p class="signup-p">Have an account? <a class="signup-button class" href="#/login">Log In</a></p>
                     </div>
                 </form>
             </div>
