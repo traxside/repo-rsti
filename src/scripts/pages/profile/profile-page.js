@@ -17,11 +17,11 @@ export default class ProfilePage {
                 <div class="profile-detail">****************</div>
             </div>
         </div>
-        
+
         <!-- Button -->
         <div class="container profile">
-            <a href="#reservationslist" class="waves-effect waves-light btn">Reservations List</a>
-            <a href="login.html" class="waves-effect waves-light btn merah">Log Out</a>
+            <a href="#/reservationslist" class="waves-effect waves-light btn">Reservations List</a>
+            <a href="#/login" class="waves-effect waves-light btn merah">Log Out</a>
         </div>
 
         <!-- Bottom Navigation -->
