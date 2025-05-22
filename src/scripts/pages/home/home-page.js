@@ -18,6 +18,8 @@ export default class HomePage {
   }
 
   async afterRender() {
+    const body= document.querySelector('body');
+    body.style.backgroundColor='white';
     // Do your job here
     this.showPropertyCard()
 

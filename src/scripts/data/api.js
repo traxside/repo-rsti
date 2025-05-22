@@ -14,11 +14,23 @@ export async function getKey() {
 }
 
 export async function login(email, password) {
-
+  // JSON stringify the parameter
   try {
     const response = true;
 
     console.log(`Login berhasil dengan email: ${email}, dan password: ${password}`);
+    return response;
+  }
+  catch (error) {
+    console.error(error);
+  }
+}
+
+export async function signup(username, email, password) {
+  // JSON stringify the parameter
+  try {
+    const response = true;
+    console.log(`Signup berhasil dengan email: ${email}, dan password: ${password}`);
     return response;
   }
   catch (error) {
