@@ -77,8 +77,6 @@ class App {
       footer.style.visibility = 'hidden';
     }
 
-    // TODO UPDATE COLOR
-
   }
 }
 

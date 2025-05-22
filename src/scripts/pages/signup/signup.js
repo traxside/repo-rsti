@@ -1,3 +1,5 @@
+import { signup } from '../../data/api';
+
 export default class SignUpPage {
     async render(){
         return `
@@ -34,7 +36,39 @@ export default class SignUpPage {
     }
 
     async afterRender(){
+        //TODO IN PROGRESS
         const body= document.querySelector('body');
         body.style.backgroundColor='#292345';
+
+        await this.handleSignUp();
+    }
+
+    async handleSignUp() {
+        const form = document.querySelector('#signup-form');
+
+        form.addEventListener('submit',async (e) => {
+            e.preventDefault();
+            const username = document.querySelector('#username').value;
+            const email = document.querySelector('#email').value;
+            const password = document.querySelector('#password').value;
+
+            try {
+                const response = await signup(username, email, password);
+
+                if (response) {
+                    console.log('Signup successful!');
+                    window.location.hash = '#/login';
+                }
+                else {
+                    console.log('Signup failed!');
+                }
+            }
+            catch(error) {
+                console.error(error);
+            }
+
+        });
+
+
     }
 }

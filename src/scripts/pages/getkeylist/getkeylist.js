@@ -36,6 +36,8 @@ export default class GetKeyListPage {
   }
 
   async afterRender() {
+    const body= document.querySelector('body');
+    body.style.backgroundColor='white';
     await this._displayKey();
   }
 

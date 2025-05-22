@@ -1,3 +1,5 @@
+import { propertyData } from '../../data/property';
+
 export default class ReservationDetailPage {
     async render() {
     // Mock data - in real implementation this would come from API
