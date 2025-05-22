@@ -94,9 +94,10 @@ header {
 }
 
 footer {
-  position: absolute;
+  position: fixed;
   width: 100%;
-  inset-block-end: 0;
+  bottom: 0;
+  z-index: 1000; /* Ensure footer stays on top */
 }
 
 /* MAIN */
@@ -107,7 +108,8 @@ a {
   font-size: 14px;
 }
 .main-content {
-  padding-block: 20px;
+  /*padding-block: 20px;*/
+  padding-bottom: 100px;
 }
 
 #reserve {
@@ -178,6 +180,51 @@ a {
   height: 38px;
 }
 
+/* RESERVATION DETAIL */
+.property-details {
+  background-color: #7164B1;
+  padding-block-start: 5px;
+  padding-block-end: 5px;
+  padding-inline: 10px;
+  border-radius: 8px;
+}
+
+.reservation-detail-title {
+  font-weight: 700;
+  font-size: 25px;
+  color: white;
+}
+
+.icon-detail {
+  width: 30px;
+  height: 30px;
+}
+
+h3 {
+  margin-block-start: 5px !important;
+  color: #DF71AA;
+  font-weight: 900 !important;
+  font-size: 18px !important;
+}
+
+.detail-item {
+  font-weight: 400 !important;
+  font-size: 14px !important;
+}
+
+.detail-bold {
+  font-weight: 700 !important;
+}
+
+.payment-details {
+  color: white;
+  padding-bottom: 10px;
+}
+
+.process-reservation-btn {
+  height: 55px;
+  border-radius: 8px;
+}
 
 @media screen and (width > 1000px) {
   .navigation-drawer {
