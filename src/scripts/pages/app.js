@@ -43,8 +43,14 @@ class App {
   }
 
   _updateNavigation() {
+    // FOR home
+    if(window.location.hash === '' || window.location.hash === '/' ){
+        window.location.hash = '#/home';
+    }
+
+    // FOR footer
     const footer = document.querySelector('footer');
-    if(window.location.hash === '' || window.location.hash === '#/profile') {
+    if(window.location.hash === '#/home' || window.location.hash === '#/profile') {
       footer.style.visibility = 'visible';
       const reserve = document.querySelector('#reserve');
       const profile = document.querySelector('#profile');

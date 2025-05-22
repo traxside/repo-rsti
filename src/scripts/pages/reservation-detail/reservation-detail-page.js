@@ -34,8 +34,6 @@ export default class ReservationDetailPage {
                                 <strong class="detail-bold">Room Description:</strong> ${propertyData["Room Description"]}
                             </div>
                         </div>
-                    </div>
-
                     <div class="property-image-section">
                         <h3>Property Image</h3>
                         <div class="image-container">

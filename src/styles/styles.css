@@ -251,6 +251,35 @@ h3 {
 }
 
 
+/* RESERVATION LISTS*/
+.header-reservation {
+  /* TODO */
+  background-color: #292345 !important;
+  padding-block-start: 2em;
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.header-reservation h1 {
+  color: white !important;
+}
+
+.key-container {
+  background-color: #292345 !important;
+  color: white;
+  border-radius: 8px !important;
+  font-weight: 600;
+  font-size: 40px;
+}
+
+.rules-element {
+  padding-bottom: 2em;
+  font-weight: 700;
+}
+
 
 @media screen and (width > 1000px) {
   .navigation-drawer {

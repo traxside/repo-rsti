@@ -68,7 +68,7 @@ form > .container.input-box input{
 }
 
 form > .container.input-box input::placeholder {
-    font-weight: medium;
+    font-weight: 600;
     color: var(--third);
 }
 
