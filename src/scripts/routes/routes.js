@@ -4,7 +4,8 @@ import LoginPage from "../pages/login/login";
 import ProfilePage from '../pages/profile/profile-page';
 import SignUpPage from '../pages/signup/signup';
 import ReservationsListPage from '../pages/reservationslist/reservationslist';
-import ReservationDetailPage from "../pages/reservation-detail/reservation-detail-page";
+import ReservationDetailDetailPage from "../pages/reservation-detail/reservation-detail-page";
+import GetKeyListPage from '../pages/getkeylist/getkeylist';
 
 const routes = {
   '/': new HomePage(),
@@ -14,7 +15,7 @@ const routes = {
   '/signup': new SignUpPage(),
   '/reservationslist': new ReservationsListPage(),
   '/reservation/:id': new ReservationDetailPage(),
-
+  '/getkeylist': new GetKeyListPage(),
 };
 
 export default routes;
