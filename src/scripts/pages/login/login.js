@@ -1,10 +1,12 @@
+import { login } from '../../data/api'
+
 export default class LoginPage {
     async render(){
         return `
         <!-- Sign Up Input Form -->
         <div class="login valign-wrapper">
             <div class="container center-align">
-                <form id="signup-form">
+                <form id="login-form">
                     <h1 class="auth-title center-align"><span>Log In</span></h1>
 
                     <!-- Inputs -->
@@ -31,5 +33,36 @@ export default class LoginPage {
     async afterRender(){
         const body= document.querySelector('body');
         body.style.backgroundColor='#292345';
+
+        await this.verifyLogin();
     }
+
+    async verifyLogin(){
+        const form = document.querySelector('#login-form');
+
+        form.addEventListener('submit', async e => {
+            e.preventDefault();
+
+            // Get form data
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await login(email, password);
+
+                if (response) {
+                    console.log("Login berhasil");
+                    //TODO
+                    window.location.hash = '#/home';
+                }
+                else {
+                    console.log("Login gagal");
+                }
+            }
+            catch (error) {
+                throw new Error(error);
+            }
+        })
+    }
+
 }

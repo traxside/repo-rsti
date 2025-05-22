@@ -43,6 +43,7 @@ class App {
   }
 
   _updateNavigation() {
+
     // FOR home
     if(window.location.hash === '' || window.location.hash === '/' ){
         window.location.hash = '#/home';
@@ -75,6 +76,9 @@ class App {
     else {
       footer.style.visibility = 'hidden';
     }
+
+    // TODO UPDATE COLOR
+
   }
 }
 
