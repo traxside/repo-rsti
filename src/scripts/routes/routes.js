@@ -4,7 +4,7 @@ import LoginPage from "../pages/login/login";
 import ProfilePage from '../pages/profile/profile-page';
 import SignUpPage from '../pages/signup/signup';
 import ReservationsListPage from '../pages/reservationslist/reservationslist';
-import ReservationDetailPage from '../pages/reservation-detail/reservation-detail-page';
+import ReservationDetailDetailPage from "../pages/reservation-detail/reservation-detail-page";
 import GetKeyListPage from '../pages/getkeylist/getkeylist';
 
 const routes = {

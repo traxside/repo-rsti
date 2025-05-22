@@ -181,6 +181,10 @@ a {
 }
 
 /* RESERVATION DETAIL */
+.header-container {
+  padding-block: 34px;
+}
+
 .property-details {
   background-color: #7164B1;
   padding-block-start: 5px;
@@ -193,6 +197,7 @@ a {
   font-weight: 700;
   font-size: 25px;
   color: white;
+  margin-block: 0 !important;
 }
 
 .icon-detail {
@@ -218,13 +223,34 @@ h3 {
 
 .payment-details {
   color: white;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
 }
 
 .process-reservation-btn {
+  margin-inline: auto;
+  background-color: #D45656;
+  color: white;
   height: 55px;
+  width: calc(100% - 32px);
   border-radius: 8px;
+  font-weight: 600;
+  font-size: 19px;
+  border: none;
+  cursor: pointer;
 }
+
+#start-date, #end-date {
+  color: black;
+  background-color: #E5E9F3 !important;
+  border-radius: 8px;
+  font-family: Inter, sans-serif;
+  font-size: 19px;
+  font-weight: 500;
+  text-indent: 10px;
+  padding-right: 5px;
+}
+
+
 
 @media screen and (width > 1000px) {
   .navigation-drawer {

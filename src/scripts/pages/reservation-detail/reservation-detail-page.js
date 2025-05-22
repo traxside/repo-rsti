@@ -13,7 +13,7 @@ export default class ReservationDetailPage {
         return `
             <section class="container">
                 <div class="reservation-process">
-                    <div class="row valign-wrapper">
+                    <div class="header-container row valign-wrapper">
                         <a class="col back" href=""><img class="icon-detail" src="images/back_arrow_purple.png" alt="back button"></a>
                         <h1 class="col reservation-detail-title">Reservation Process</h1>
                     </div>
@@ -70,8 +70,10 @@ export default class ReservationDetailPage {
                             <div class="tax-note">*Price included Tax</div>
                         </div>
                     </div>
-
-                    <button class="process-reservation-btn">Process Reservation</button>
+                     
+                    <div class="container center-align">
+                        <button class="process-reservation-btn row s10">Process Reservation</button>
+                    </div>
                 </div>
             </section>
         `;

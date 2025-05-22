@@ -44,12 +44,8 @@ class App {
 
   _updateNavigation() {
     const footer = document.querySelector('footer');
-    footer.style.visibility = 'visible';
-    if(window.location.hash === '#/login' || window.location.hash === '#/signup') {
-      footer.style.visibility = 'hidden';
-    }
-    // TODO ERROR ATTRIBUTES
-    else {
+    if(window.location.hash === '' || window.location.hash === '#/profile') {
+      footer.style.visibility = 'visible';
       const reserve = document.querySelector('#reserve');
       const profile = document.querySelector('#profile');
       if(window.location.hash === '#/home' || window.location.hash === '') {
@@ -68,6 +64,10 @@ class App {
         profile.style.color = '#292345';
         profile.querySelector('#icon-profile').setAttribute('src', 'images/profile_dark.png');
       }
+    }
+    // TODO ERROR ATTRIBUTES
+    else {
+      footer.style.visibility = 'hidden';
     }
   }
 }
