@@ -77,8 +77,9 @@ export default class LoginPage {
                 console.log('Attempting login with username:', username, password);
                 const result = await login(username, password);
                 console.log('Login result:', result);
+                console.log(result.status);
 
-                if (result.status === 'Success') {
+                if (result.success) {
                     console.log("Login successful");
 
                     // Save username to localStorage (override if already exists)
