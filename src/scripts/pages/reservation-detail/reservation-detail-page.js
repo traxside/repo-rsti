@@ -17,7 +17,9 @@ export default class ReservationDetailPage {
                     </div>
 
                     <div id="property-content">
-
+                        <div class="center-align" style="padding: 40px;">
+                            <p style="color: #7164B1;">Loading property details...</p>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -41,12 +43,17 @@ export default class ReservationDetailPage {
 
     async loadProperty() {
         try {
-            this.property = await getProperty(this.propertyId);
-            if (this.property) {
+            console.log(`Loading property with ID: ${this.propertyId}`);
+            const propertyResult = await getProperty(this.propertyId);
+
+            if (propertyResult.success) {
+                this.property = propertyResult.property;
+                console.log('Property loaded:', this.property);
                 this.displayProperty();
                 this.setupEventListeners();
             } else {
-                this.displayError('Property not found');
+                console.error('Failed to load property:', propertyResult.error);
+                this.displayError(propertyResult.error || 'Property not found');
             }
         } catch (error) {
             console.error('Error loading property:', error);
@@ -56,23 +63,38 @@ export default class ReservationDetailPage {
 
     displayProperty() {
         const contentContainer = document.querySelector('#property-content');
-        const formattedPrice = new Intl.NumberFormat('id-ID').format(this.property.price);
+
+        // Handle different property structure from API - use prop_id instead of id
+        const propertyName = this.property.name || this.property.title || `Property ${this.property.prop_id}`;
+        const propertyLocation = this.property.location || 'Location not specified';
+        const propertySize = this.property.size || 'Size not specified';
+        const propertyDescription = this.property.description || 'No description available';
+        const propertyImage = this.property.image || 'images/default-property.jpg';
+        const propertyPrice = this.property.price || 0;
+
+        // Handle price - it might be a string from API, so convert to number
+        const numericPrice = typeof propertyPrice === 'string' ? parseFloat(propertyPrice) || 0 : propertyPrice;
+        const formattedPrice = new Intl.NumberFormat('id-ID').format(numericPrice);
 
         contentContainer.innerHTML = `
+            <div class="property-header">
+                <h2 style="color: white; margin-bottom: 20px;">${propertyName}</h2>
+            </div>
+
             <div class="description-section">
                 <h3>Description</h3>
                 <div class="property-details">
                     <div class="detail-item">
-                        <strong class="detail-bold">Location:</strong> ${this.property.location}
+                        <strong class="detail-bold">Location:</strong> ${propertyLocation}
                     </div>
                     <div class="detail-item">
-                        <strong class="detail-bold">Size:</strong> ${this.property.size}
+                        <strong class="detail-bold">Size:</strong> ${propertySize}
                     </div>
                     <div class="detail-item">
                         <strong class="detail-bold">Price:</strong> Rp ${formattedPrice} / day
                     </div>
                     <div class="detail-item">
-                        <strong class="detail-bold">Room Description:</strong> ${this.property.description}
+                        <strong class="detail-bold">Room Description:</strong> ${propertyDescription}
                     </div>
                 </div>
             </div>
@@ -80,7 +102,10 @@ export default class ReservationDetailPage {
             <div class="property-image-section">
                 <h3>Property Image</h3>
                 <div class="image-container">
-                    <img src="${this.property.image}" alt="${this.property.name} Interior" style="width: 100%; border-radius: 8px;" />
+                    <img src="${propertyImage}" 
+                         alt="${propertyName} Interior" 
+                         style="width: 100%; border-radius: 8px; max-height: 300px; object-fit: cover;" 
+                         onerror="this.src='images/default-property.jpg'; this.onerror=null;" />
                 </div>
             </div>
             
@@ -184,7 +209,10 @@ export default class ReservationDetailPage {
         errorDiv.style.display = 'none';
         const timeDiff = endDate.getTime() - startDate.getTime();
         const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
-        const totalPrice = daysDiff * this.property.price;
+
+        // Handle price - it might be a string from API, so convert to number
+        const numericPrice = typeof this.property.price === 'string' ? parseFloat(this.property.price) || 0 : this.property.price;
+        const totalPrice = daysDiff * numericPrice;
 
         totalDaysSpan.textContent = daysDiff.toString();
         totalPriceSpan.textContent = `Rp ${new Intl.NumberFormat('id-ID').format(totalPrice)}`;
@@ -205,38 +233,72 @@ export default class ReservationDetailPage {
         }
 
         // Check if user is logged in
-        const user = await getCurrentUser();
+        const user = getCurrentUser();
+        console.log(user);
         if (!user) {
             alert('Please log in to make a reservation');
             window.location.hash = '#/login';
             return;
         }
 
-        // Calculate total
+        // Validate dates
         const start = new Date(startDate);
         const end = new Date(endDate);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        if (start < today) {
+            errorDiv.textContent = 'Start date cannot be in the past';
+            errorDiv.style.display = 'block';
+            return;
+        }
+
+        if (end <= start) {
+            errorDiv.textContent = 'End date must be after start date';
+            errorDiv.style.display = 'block';
+            return;
+        }
+
+        // Calculate total
         const totalDays = Math.ceil((end.getTime() - start.getTime()) / (1000 * 3600 * 24));
-        const totalPrice = totalDays * this.property.price;
+
+        // Handle price - it might be a string from API, so convert to number
+        const numericPrice = typeof this.property.price === 'string' ? parseFloat(this.property.price) || 0 : this.property.price;
+        const totalPrice = totalDays * numericPrice;
 
         // Disable button and show loading
         processBtn.disabled = true;
         processBtn.textContent = 'Processing...';
+        errorDiv.style.display = 'none';
 
+        const username = user.username;
         try {
-            const result = await createReservation(
-                this.propertyId,
+            console.log('Creating reservation:', {
+                username,
                 startDate,
                 endDate,
-                totalPrice,
-                totalDays
+            });
+
+            console.log("property id is :", this.property.id);
+            console.log('start date is ', startDate);
+            console.log('end date is ', endDate);
+            const result = await createReservation(
+                this.property.prop_id,
+                username,
+                startDate,
+                endDate,
             );
+
+            console.log('Reservation result:', result);
 
             if (result.success) {
                 alert('Reservation created successfully!');
+                // Navigate to reservations list to see the new reservation
                 window.location.hash = '#/reservationslist';
             } else {
-                errorDiv.textContent = result.message || 'Failed to create reservation';
+                errorDiv.textContent = result.message || result.error || 'Failed to create reservation';
                 errorDiv.style.display = 'block';
+                console.error('Reservation failed:', result);
             }
         } catch (error) {
             console.error('Reservation error:', error);

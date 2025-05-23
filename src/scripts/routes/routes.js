@@ -8,7 +8,7 @@ import ReservationDetailPage from "../pages/reservation-detail/reservation-detai
 import GetKeyListPage from '../pages/getkeylist/getkeylist';
 
 const routes = {
-  '/': new HomePage(),
+  '/': new LoginPage(),
   '/home': new HomePage(),
   '/about': new AboutPage(),
   '/login': new LoginPage(),
@@ -16,7 +16,7 @@ const routes = {
   '/signup': new SignUpPage(),
   '/reservationslist': new ReservationsListPage(),
   '/reservation/:id': new ReservationDetailPage(),
-  '/getkeylist': new GetKeyListPage(),
+  '/getkeylist/:id': new GetKeyListPage(),
 };
 
 export default routes;

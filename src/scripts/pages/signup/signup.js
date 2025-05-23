@@ -111,7 +111,7 @@ export default class SignUpPage {
 
             try {
                 const response = await signup(username, email, password);
-
+                console.log("This is response :", response);
                 if (response.success) {
                     this.showMessage('Account created successfully! Redirecting to login...', false);
                     signupBtn.textContent = 'Success!';

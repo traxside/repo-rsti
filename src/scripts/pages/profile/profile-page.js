@@ -1,4 +1,4 @@
-import { getCurrentUser, logout } from '../../data/api';
+import { getCurrentUser, logout, clearCurrentUser } from '../../data/api';
 
 export default class ProfilePage {
     constructor() {

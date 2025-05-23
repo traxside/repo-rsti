@@ -15,7 +15,7 @@ export default class LoginPage {
 
                     <!-- Inputs -->
                     <div class="container input-box">
-                        <input placeholder="Email" id="email" type="email" required>
+                        <input placeholder="Username" id="username" type="text" required>
                     </div>
                     <div class="container input-box">
                         <input placeholder="Password" id="password" type="password" required>
@@ -39,7 +39,7 @@ export default class LoginPage {
         body.style.backgroundColor = '#292345';
 
         // Check if user is already logged in
-        const user = await getCurrentUser();
+        const user = getCurrentUser(); // Remove await since it's not async
         if (user) {
             window.location.hash = '#/home';
             return;
@@ -48,7 +48,7 @@ export default class LoginPage {
         await this.setupLogin();
     }
 
-    async setupLogin(){
+    async setupLogin() {
         const form = document.querySelector('#login-form');
         const errorDiv = document.getElementById('error-message');
         const loginBtn = document.getElementById('login-btn');
@@ -60,11 +60,11 @@ export default class LoginPage {
             errorDiv.style.display = 'none';
 
             // Get form data
-            const email = document.getElementById('email').value.trim();
+            const username = document.getElementById('username').value.trim();
             const password = document.getElementById('password').value;
 
             // Validate input
-            if (!email || !password) {
+            if (!username || !password) {
                 this.showError('Please fill in all fields');
                 return;
             }
@@ -74,21 +74,25 @@ export default class LoginPage {
             loginBtn.textContent = 'Logging in...';
 
             try {
-                const result = await login(email, password);
+                console.log('Attempting login with username:', username, password);
+                const result = await login(username, password);
+                console.log('Login result:', result);
 
-                if (result.success) {
+                if (result.status === 'Success') {
                     console.log("Login successful");
-                    // Small delay to show success
-                    loginBtn.textContent = 'Success!';
-                    setTimeout(() => {
-                        window.location.hash = '#/home';
-                    }, 500);
+
+                    // Save username to localStorage (override if already exists)
+                    localStorage.setItem('username', username);
+
+                    // Redirect to home
+                    window.location.hash = '#/home';
                 } else {
-                    this.showError(result.message || 'Invalid email or password');
+                    // Optional: Show error message from API
+                    // this.showError(result.error || 'Invalid username or password');
                 }
             } catch (error) {
                 console.error('Login error:', error);
-                this.showError('Login failed. Please try again.');
+                // this.showError('Login failed. Please try again.');
             } finally {
                 if (loginBtn.textContent !== 'Success!') {
                     loginBtn.disabled = false;
@@ -98,9 +102,9 @@ export default class LoginPage {
         });
     }
 
-    showError(message) {
-        const errorDiv = document.getElementById('error-message');
-        errorDiv.textContent = message;
-        errorDiv.style.display = 'block';
-    }
+    // showError(message) {
+    //     const errorDiv = document.getElementById('error-message');
+    //     errorDiv.textContent = message;
+    //     errorDiv.style.display = 'block';
+    // }
 }
