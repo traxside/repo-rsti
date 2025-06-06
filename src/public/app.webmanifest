@@ -65,23 +65,23 @@
         "type": "image/png",
         "form_factor": "narrow"
       },
-        {
-          "src": "images/screenshots/RepoApp_001.png",
-          "sizes": "1080x2280",
-          "type": "image/png",
-          "form_factor": "wide"
-        },
-        {
-          "src": "images/screenshots/RepoApp_002.png",
-          "sizes": "1080x2280",
-          "type": "image/png",
-          "form_factor": "wide"
-        },
-        {
-          "src": "images/screenshots/RepoApp_003.png",
-          "sizes": "1080x2280",
-          "type": "image/png",
-          "form_factor": "wide"
-        },
+      {
+        "src": "images/screenshots/RepoApp_001.png",
+        "sizes": "1080x2280",
+        "type": "image/png",
+        "form_factor": "wide"
+       },
+      {
+        "src": "images/screenshots/RepoApp_002.png",
+        "sizes": "1080x2280",
+        "type": "image/png",
+        "form_factor": "wide"
+       },
+      {
+       "src": "images/screenshots/RepoApp_003.png",
+       "sizes": "1080x2280",
+       "type": "image/png",
+       "form_factor": "wide"
+      },
   ]
 }
