@@ -8,6 +8,9 @@ import 'materialize-css/dist/js/materialize.min.js';
 
 import App from './pages/app';
 
+// UTILS
+import { registerServiceWorker } from './utils';
+
 document.addEventListener('DOMContentLoaded', async () => {
   const app = new App({
     content: document.querySelector('#main-content'),
@@ -15,6 +18,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     navigationDrawer: document.querySelector('#navigation-drawer'),
   });
   await app.renderPage();
+
+  await registerServiceWorker();
 
   window.addEventListener('hashchange', async () => {
     await app.renderPage();
